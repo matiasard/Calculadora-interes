@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora Interes</title>
+</head>
+
+<body>
+  <h1>Calculadora</h1>
+
+  <main>
+    <form action="">
+      <label for="monto">Monto($):</label> <input type="number" id="monto">
+      <label for="interes">Interes</label> <input type="number" id="interes" required>
+      <br>
+      <label for="tiempo">Tiempo</label> <input type="number" id="tiempo">
+      <select name="yearMonth" id="yearMonth">
+        <option value="year">Year</option>
+        <option value="month">Month</option>
+      </select>
+      <br>
+      <button type="submit" id="btn-calc">Calcular</button>
+    </form>
+
+    <div id="result">
+      <p id="montoInicial-label">Monto Inicial: $50000</p>
+      <p id="interes-label">Total Interes: $50000</p>
+      <p id="montoTotal-label">Monto Total: $50000</p>
+    </div>
+  </main>
+
+  <script src="./app.js"></script>
+</body>
+
+</html>
