@@ -4,8 +4,8 @@
 const monto = document.getElementById('monto');
 const interes = document.getElementById('interes');
 const tiempo = document.getElementById('tiempo');
-const btnCalcular = document.getElementById('btn-calc');
 const opcion = document.getElementById('yearMonth');
+const btnCalcular = document.getElementById('btn-calc');
 const btnReset = document.getElementById('btn-reset');
 
 let resultado = document.getElementById('result');
@@ -19,8 +19,6 @@ btnCalcular.addEventListener('click', (e) => {
   e.preventDefault();
 
   resultadoTiempo = interestCalcTime(+tiempo.value, opcion.value);
-  console.log(resultadoTiempo);
-
   //* UI Update
   updateUI();
 });
@@ -30,9 +28,9 @@ btnCalcular.addEventListener('click', (e) => {
 //* 50000 * (0.39 / 12) * 3
 
 const interestCalcTime = function (time, opcion) {
-  let timeSelect = 0;
+  let timeSelect = 1;
   let interesCalc = (monto.value * (+interes.value / 100)) / 12;
-  opcion === 'year' ? (timeSelect = 12) : (timeSelect = 1);
+  if (opcion === 'year') timeSelect = 12;
 
   return +(interesCalc * (time * timeSelect)).toFixed(2);
 };
@@ -54,7 +52,6 @@ btnReset.addEventListener('click', (e) => {
   e.preventDefault();
 
   monto.value = tiempo.value = interes.value = '';
-
   resultado.textContent = '';
   resultado.insertAdjacentHTML(
     'afterbegin',
