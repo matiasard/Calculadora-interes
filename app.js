@@ -1,5 +1,5 @@
 'use strict';
-//* Data
+//? ------ Data ------
 
 const monto = document.getElementById('monto');
 const interes = document.getElementById('interes');
@@ -12,47 +12,33 @@ let resultado = document.getElementById('result');
 
 let resultadoInteres = 0;
 let resultadoTiempo = 0;
-//* Funciones
+
+//? ------ Funciones ------
 
 btnCalcular.addEventListener('click', (e) => {
   e.preventDefault();
 
-  resultadoInteres = interestCalc(+monto.value, +interes.value);
-  console.log(resultadoInteres);
-  // console.log(+resultadoInteres.toFixed(2));
-
-  resultadoTiempo = interestCalcTime(
-    resultadoInteres,
-    +tiempo.value,
-    opcion.value
-  );
+  resultadoTiempo = interestCalcTime(+tiempo.value, opcion.value);
   console.log(resultadoTiempo);
-  // console.log(+resultadoTiempo.toFixed(2));
 
   //* UI Update
   updateUI();
 });
 
-// Formula
+//? ------ Formula ------
 //* 50000 * (39 / 100) / 12 * 3
 //* 50000 * (0.39 / 12) * 3
 
-const interestCalc = function (monto, interes) {
-  return (monto * (interes / 100)) / 12;
-};
-
-const interestCalcTime = function (interes, time, opcion) {
+const interestCalcTime = function (time, opcion) {
   let timeSelect = 0;
+  let interesCalc = (monto.value * (+interes.value / 100)) / 12;
   opcion === 'year' ? (timeSelect = 12) : (timeSelect = 1);
 
-  return +(interes * (time * timeSelect)).toFixed(2);
+  return +(interesCalc * (time * timeSelect)).toFixed(2);
 };
 
-//* Monto: Incial +monto.value
-//* Interes: resultadoTiempo
-//* Monto Total: +monto.value + resultadoTiempo
-
 const updateUI = function () {
+  resultado.textContent = '';
   resultado.insertAdjacentHTML(
     'afterbegin',
     `<p id="montoInicial-label">Monto Inicial: $${monto.value}</p>
@@ -63,8 +49,17 @@ const updateUI = function () {
   );
 };
 
+//* Clean UI
 btnReset.addEventListener('click', (e) => {
   e.preventDefault();
 
   monto.value = tiempo.value = interes.value = '';
+
+  resultado.textContent = '';
+  resultado.insertAdjacentHTML(
+    'afterbegin',
+    `<p id="montoInicial-label">Monto Inicial: $0</p>
+      <p id="interes-label">Total Interes: $0</p>
+      <p id="montoTotal-label">Monto Total: $0</p>`
+  );
 });
