@@ -48,10 +48,11 @@ const updateUI = function () {
 };
 
 //* Clean UI
-btnReset.addEventListener('click', (e) => {
-  e.preventDefault();
+btnReset.addEventListener('click', () => {
+  //* Al agregar el el boton con la propiedad type="reset", solo se limpian los datos de los inputs y el codigo que esta comentado a bajo ya no es necesario 👇
+  // e.preventDefault();
+  // monto.value = tiempo.value = interes.value = '';
 
-  monto.value = tiempo.value = interes.value = '';
   resultado.textContent = '';
   resultado.insertAdjacentHTML(
     'afterbegin',
