@@ -10,29 +10,38 @@
 </head>
 
 <body>
-  <h1>Calculadora</h1>
-
-  <main>
-    <form action="">
-      <label for="monto">Monto($):</label> <input type="number" id="monto">
-      <label for="interes">Interes</label> <input type="number" id="interes" required>
-      <br>
-      <label for="tiempo">Tiempo</label> <input type="number" id="tiempo">
-      <select name="yearMonth" id="yearMonth">
-        <option value="month">Month</option>
-        <option value="year">Year</option>
-      </select>
-      <br>
-      <button type="submit" id="btn-calc">Calcular</button>
-      <button type="reset" id="btn-reset">Resetear</button>
-    </form>
-
-    <div id="result">
-      <p>Monto Inicial: $0</p>
-      <p>Total Interes: $0</p>
-      <p>Monto Total: $0</p>
+  <main class="container">
+    <div class="tittle">
+      <h1 class="tittle-h1">Calculadora</h1>
     </div>
+
+    <div class="app">
+      <form action="">
+        <label for="monto">Monto($):</label> <input type="number" id="monto" name="monto">
+        <label for="interes">Interes:</label> <input type="number" id="interes" required>
+        <br>
+        <label for="tiempo">Tiempo:</label>
+        <div class="form-select">
+          <input type="number" id="tiempo" name="tiempo" required>
+          <select name="yearMonth" id="yearMonth">
+            <option value="month">Month</option>
+            <option value="year">Year</option>
+          </select>
+        </div>
+        <br>
+        <div class="form-btn">
+          <button type="submit" id="btn-calc" class="btn">Calcular</button>
+          <button type="reset" id="btn-reset" class="btn">Resetear</button>
+        </div>
+      </form>
+
+      <div id="result">
+        <p>Monto Inicial: $0</p>
+        <p>Total Interes: $0</p>
+        <p>Monto Total: $0</p>
+      </div>
   </main>
+  </div>
 
   <script src="./app.js"></script>
 </body>
